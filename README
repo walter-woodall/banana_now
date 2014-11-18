@@ -2,3 +2,8 @@ This is your new Play application
 =================================
 
 This file will be packaged with your application, when using `activator dist`.
+
+
+You can access the app at:
+
+http://104.131.84.120:49154
