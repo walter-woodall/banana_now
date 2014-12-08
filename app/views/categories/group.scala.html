@@ -1,12 +1,10 @@
 @(group: String, subcategories: List[Category])
 
-<li data-group="@group">
-    <span class="toggle"></span>
-    <h4 class="groupName">@group</h4>
-    <span class="loader">Loading</span>
-    <ul>
-        @subcategories.map { sub =>
-            @views.html.categories.item(sub.subcategory)
-        }
-    </ul>
+<li class="dropdown">
+<a href="#" data-toggle="dropdown">@group<i class="icon-arrow"></i></a>
+<ul class="dropdown-menu">
+    @subcategories.map { sub =>
+        @views.html.categories.item(sub.subcategory)
+    }
+</ul>
 </li>

@@ -1,14 +1,14 @@
-// -----------------------------------
-// MAIN
-// -----------------------------------
-// author: mda@zenexity.com - 2011
-// -----------------------------------
-
 @import 'libs/_reset.less';
 @import 'libs/_mate.less';
 @import 'libs/_theme.less';
+@import 'main/_layout.less';
+@import 'main/_widgets.less';
+@import 'main/_drawer.less';
+@import 'main/_header.less';
+@import 'main/_breadcrumb.less';
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
 
-// ----------------------- MAIN STYLES
 body {
     background: @mainBackground;
     color: @mainColor;
@@ -24,12 +24,3 @@ a {
         color: @linksHover;
     }
 }
-
-// --------------------------- IMPORTS
-@import 'main/_layout.less';        // General grid
-@import 'main/_widgets.less';       // Some shared elements
-@import 'main/_drawer.less';        // Project drawer
-@import 'main/_header.less';        // Top header + User bar
-@import 'main/_breadcrumb.less';    // Breadcrumb + App menu
-@import 'apps/_tasks.less';         // Tasks 
-
