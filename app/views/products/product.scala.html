@@ -1,0 +1,15 @@
+@(product: Product)
+
+<li data-task-id="@product.id">
+    <img src="@product.imageUrl" alt="No Image Available">
+
+    <h4>@product.name</h4>
+
+    <!-- Price Display -->
+    @if(product.price != 0.0){
+        <span class="product-price">@product.price</span>
+    }
+    @if(product.price == 0.0){
+        <span class="available-in-store">Only Available in Store</span>
+    }
+</li>

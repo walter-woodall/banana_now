@@ -12,7 +12,7 @@ import java.util.List;
 public class Customer extends Model {
 
     @Id
-    public long id;
+    public int id;
     public String email;
     public String password;
     public String name;
@@ -21,12 +21,14 @@ public class Customer extends Model {
     public Address address;
     public double balance;
     @OneToMany
-    private List<CreditCard> creditCardList;
+    public List<CreditCard> creditCardList;
+    @OneToMany
+    public List<Basket> basketList;
 
     public Customer(String email, String password, String name, Address address){
         this.email = email.toLowerCase();
         this.password = password;
-        this.name = name;
+        this.name = name.toLowerCase();
         this.address = address;
         this.balance = 0.0;
 
@@ -38,4 +40,7 @@ public class Customer extends Model {
         return find.where().eq("email", email)
                 .eq("password", password).findUnique();
     }
+
+
+
 }

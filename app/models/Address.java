@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Address extends Model{
 
     @Id
-    public long id;
+    public int id;
     public String address1;
     public String address2;
     public String city;

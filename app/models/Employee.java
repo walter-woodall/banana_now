@@ -2,19 +2,23 @@ package models;
 
 import play.db.ebean.Model;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Created by walterwoodall on 12/5/14.
  */
+@Entity
+@Table(name="employee")
 public class Employee extends Model{
     @Id
-    private long id;
-    private String name;
-    private int manager;
+    public int id;
+    public String name;
+    public int manager;
     @ManyToOne
-    private Store store;
+    public Store store;
 
     public Employee(String name, int manager, Store store){
         this.name = name;

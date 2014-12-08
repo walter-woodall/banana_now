@@ -10,15 +10,15 @@ import java.sql.Date;
  */
 @Entity
 @Table(name = "credit_card")
-public class CreditCard {
+public class CreditCard extends Model{
     @Id
-    private long number;
+    public long number;
     @ManyToOne
-    Customer customer;
-    String name;
-    Date expiration;
-    int zipcode;
-    int cvc;
+    public Customer customer;
+    public String name;
+    public Date expiration;
+    public int zipcode;
+    public int cvc;
 
     public CreditCard(long number, Customer customer, String name, Date expiration, int zipcode, int cvc){
         this.number = number;
@@ -29,5 +29,5 @@ public class CreditCard {
         this.cvc = cvc;
     }
 
-    public Model.Finder<String, CreditCard> find = new Model.Finder<String, CreditCard>(String.class, CreditCard.class);
+    public static Finder<String, CreditCard> find = new Model.Finder<String, CreditCard>(String.class, CreditCard.class);
 }

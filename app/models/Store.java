@@ -15,15 +15,15 @@ import java.util.List;
 @Entity
 public class Store extends Model {
     @Id
-    public long id;
+    public int id;
     public String name;
     @OneToOne
-    Address address;
+    public Address address;
     @OneToMany
-    List<Employee> employeeList;
+    public List<Employee> employeeList;
 
     public Store(String name, Address address){
-        this.name = name;
+        this.name = name.toLowerCase();
         this.address = address;
         this.employeeList = new ArrayList<Employee>();
     }

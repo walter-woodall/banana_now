@@ -13,18 +13,24 @@ import java.util.List;
 @Entity
 public class Basket extends Model {
     @Id
-    public long id;
+    public int id;
     @CreatedTimestamp
-    Timestamp time;
+    public Timestamp time;
     int complete;
     @ManyToOne
-    Customer customer;
+    public Customer customer;
+    @ManyToOne
+    public Employee employee;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "basket")
-    private List<Basket_Product> basket_product;
+    public  List<BasketProduct> basket_product;
 
     public Basket(Customer customer){
         this.customer = customer;
         this.complete = 0;
+    }
+    public Basket(Customer customer, Employee employee){
+        this.customer = customer;
+        this.employee = employee;
     }
 
     public static Finder<String, Basket> find = new Finder<String, Basket>(String.class, Basket.class);
