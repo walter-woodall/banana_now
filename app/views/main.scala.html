@@ -4,6 +4,7 @@
     <head>
         <title>Banana Now</title>
         <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/dropmenu.css")">
         <script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.7.1.js")"></script>
     </head>
     <body>
@@ -27,14 +28,13 @@
         </header>
         <nav>
             <h4 class="dashboard"><a href="#/">Dashboard</a></h4>
-            <ul id="categories">
                 @categories.groupBy(_.mainCategory).map {
                     case (group, subcategories) => {
                         @views.html.categories.group(group, subcategories)
                     }
                 }
-            </ul>
         </nav>
+        <script type="text/javascript" src="@routes.Assets.at("javascripts/dropdown.js")"></script>
         <section id="main">
             @body
         </section>
