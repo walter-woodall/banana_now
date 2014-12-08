@@ -1,4 +1,4 @@
-@(categories: List[Category])(body: Html)
+@(categories: List[Category], user: Customer)(body: Html)
 
 <html>
     <head>
@@ -9,6 +9,20 @@
     <body>
         <header>
             <a href="@routes.Application.index" id="logo"><span>Banana</span>Now</a>
+            <dl id="user">
+
+                @if(user != null){
+                    <dt>@user.name <span>(@user.email)</span></dt>
+                    <dd>
+                        <a href="@routes.Application.logout()">Logout</a>
+                    </dd>
+                }
+                @if(user == null){
+                    <dd>
+                        <a href="@routes.Application.login()">Login</a>
+                    </dd>
+                }
+            </dl>
         </header>
         <nav>
             <h4 class="dashboard"><a href="#/">Dashboard</a></h4>

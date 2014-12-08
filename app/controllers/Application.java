@@ -12,17 +12,27 @@ import static play.data.Form.*;
 
 public class Application extends Controller {
 
+    @Security.Authenticated(Secured.class)
     public static Result index() {
 
         return ok(index.render(
                 Product.getTopProducts(),
-                Category.getAllCategories()
+                Category.getAllCategories(),
+                Customer.find.where().eq("email", request().username()).findUnique()
         ));
     }
 
     public static Result login(){
         return ok(
                 login.render(form(Login.class))
+        );
+    }
+
+    public static Result logout() {
+        session().clear();
+        flash("success", "You've been logged out");
+        return redirect(
+                routes.Application.login()
         );
     }
 
