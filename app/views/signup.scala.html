@@ -1,0 +1,85 @@
+@(form: Form[Application.Signup])
+
+<html>
+    <head>
+        <title>Banana Now</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/card.css")">
+    </head>
+    <body>
+        <header>
+            <a href="@routes.Application.index" id="logo"><span>Banana</span>Now</a>
+        </header>
+
+        @helper.form(routes.Application.doSignup) {
+            <h1>Sign up</h1>
+
+            <p><input type="name" name="name" placeholder="Name" value="@form("name").value"></p>
+            <p><input type="email" name="email" placeholder="Email" value="@form("email").value"></p>
+            <p><input type="password" name="password" placeholder="Password"></p>
+            <p><input type="address1" name="address1" placeholder="Address Line 1" value="@form("address1").value"></p>
+            <p><input type="address2" name="address2" placeholder="Address Line 2" value="@form("address2").value"></p>
+            <p><input type="city" name="city" placeholder="City" value="@form("city").value"></p>
+            <p><input type="state" name="state" placeholder="State" value="@form("state").value"></p>
+            <p><input type="zipcode" name="zipcode" placeholder="Zipcode" value="@form("zipcode").value"></p>
+			<div class="card-wrapper">
+				<p><input placeholder="Card number" type="text" name="cc-number" value="@form("cc-number").value"></p>
+				<p><input placeholder="Full name" type="text" name="cc-name" value="@form("cc-name").value"></p>
+				<p><input placeholder="MM/YY" type="text" name="cc-expiry" value="@form("cc-expiry").value"></p>
+				<p><input placeholder="CVC" type="text" name="cc-cvc" value="@form("cc-cvc").value"></p>
+			</div>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="@routes.Assets.at("javascripts/card.js")"></script>
+        <script>
+            $('form').card({
+    // a selector or jQuery object for the container
+    // where you want the card to appear
+    container: '.card-wrapper', // *required*
+    numberInput: 'input[name="cc-number"]', 
+    expiryInput: 'input[name="cc-expiry"]', 
+    cvcInput: 'input[name="cc-cvc"]', // 
+    nameInput: 'input[name="cc-name"]', 
+
+    width: 300, // optional — default 350px
+    formatting: true, // optional - default true
+
+    // Strings for translation - optional
+    messages: {
+        validDate: 'valid\ndate', // optional - default 'valid\nthru'
+        monthYear: 'mm/yyyy', // optional - default 'month/year'
+    },
+
+    // Default values for rendered fields - options
+    values: {
+        number: '•••• •••• •••• ••••',
+        name: 'Full Name',
+        expiry: '••/••',
+        cvc: '•••'
+    },
+
+    debug: false // if true, will log helpful messages for setting up Card
+});
+        </script>
+
+            <p><button type="submit">Register</button></p>
+		}
+            @if(form.hasGlobalErrors) {
+                <p class="error">
+                    @form.globalError.message
+                </p>
+            }
+
+            @if(flash.contains("success")) {
+                <p class="success">
+                    @flash.get("success")
+                </p>
+            }
+
+			
+
+
+
+    </body>
+</html>

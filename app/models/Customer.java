@@ -3,6 +3,8 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +35,7 @@ public class Customer extends Model {
         this.name = name.toLowerCase();
         this.address = address;
         this.balance = 0.0;
-
+        this.creditCardList = new ArrayList<CreditCard>();
     }
 
     public static Finder<String, Customer> find = new Finder<String, Customer>(String.class, Customer.class);
@@ -43,6 +45,10 @@ public class Customer extends Model {
                 .eq("password", password).findUnique();
     }
 
+    public static Customer exists(String email) {
+        return find.where().eq("email", email).findUnique();
+    }
+    
 
 
-}
+    }
