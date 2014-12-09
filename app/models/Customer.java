@@ -24,6 +24,8 @@ public class Customer extends Model {
     public List<CreditCard> creditCardList;
     @OneToMany
     public List<Basket> basketList;
+    @OneToMany
+    public List<ShoppingCart> shoppingCartList;
 
     public Customer(String email, String password, String name, Address address){
         this.email = email.toLowerCase();

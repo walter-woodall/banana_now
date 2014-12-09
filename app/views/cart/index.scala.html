@@ -1,0 +1,24 @@
+@(products: List[ShoppingCart], walmartCategories: List[Category], amazonCategories: List[Category], user: Customer)
+
+@main(walmartCategories, amazonCategories, user) {
+
+<header>
+    <hgroup>
+        <h1>Cart</h1>
+        <h2>@user.name (@user.email)</h2>
+    </hgroup>
+</header>
+
+<article  class="cart">
+    @products.map { product =>
+    <div class="folder" data-folder-id="@product.name">
+        <ul class="list">
+
+            @views.html.products.product(product)
+
+        </ul>
+    </div>
+    }
+</article>
+
+}
