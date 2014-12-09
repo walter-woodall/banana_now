@@ -17,7 +17,7 @@ public class Application extends Controller {
     public static Result index() {
         Store walmart = Store.find.byId("1");
         Store amazon = Store.find.byId("2");
-        return ok(index.render(
+        return ok(views.html.index.render(
                 Product.getTopProducts(),
                 Category.getAllCategories(walmart),
                 Category.getAllCategories(amazon),
@@ -28,7 +28,7 @@ public class Application extends Controller {
     public static Result getFood(String category, String subcategory){
         Store walmart = Store.find.byId("1");
         Store amazon = Store.find.byId("2");
-        return ok(foodMain.render(
+        return ok(views.html.products.index.render(
                 Product.find.where().eq("category", category).eq("subcategory", subcategory).findList(),
                 Category.getAllCategories(walmart),
                 Category.getAllCategories(amazon),
