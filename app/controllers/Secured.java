@@ -1,5 +1,7 @@
 package controllers;
 
+import models.Employee;
+import models.Store;
 import play.mvc.*;
 import play.mvc.Http.*;
 
@@ -16,4 +18,10 @@ public class Secured extends Security.Authenticator{
     public Result onUnauthorized(Context ctx) {
         return redirect(routes.Application.login());
     }
+
+    /*
+    public static boolean isManagerOf(Store store){
+        return Employee.isManager(store, Context.current().request().username());
+    }
+    */
 }

@@ -20,8 +20,9 @@ public class Category extends Model {
        this.subcategory = subcategory;
    }
 
-   public static List<Category> getAllCategories(){
-       String sql = "select category, subcategory from product group by subcategory order by category asc;";
+   public static List<Category> getAllCategories(Store store){
+       int id = store.id;
+       String sql = "select category, subcategory from product where store_id = " + id + " group by subcategory order by category asc;";
        LinkedList<Category> categories = null;
        SqlQuery sqlQuery = Ebean.createSqlQuery(sql);
 

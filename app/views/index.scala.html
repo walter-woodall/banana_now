@@ -1,6 +1,6 @@
-@(products: List[Product], categories: List[Category], user: Customer)
+@(products: List[Product], walmartCategories: List[Category], amazonCategories: List[Category], user: Customer)
 
-@main(categories, user) {
+@main(walmartCategories, amazonCategories, user) {
 
 <header>
     <hgroup>
@@ -11,18 +11,18 @@
 
 <article  class="tasks">
     @products.groupBy(_.category).map {
-        case (category, products) => {
-            <div class="folder" data-folder-id="@category">
-                <header>
-                    <h3>@category</h3>
-                </header>
-                <ul class="list">
-                    @products.map { product =>
-                        @views.html.products.product(product)
-                    }
-                </ul>
-            </div>
-        }
+    case (category, products) => {
+    <div class="folder" data-folder-id="@category">
+        <header>
+            <h3>@category</h3>
+        </header>
+        <ul class="list">
+            @products.map { product =>
+            @views.html.products.product(product)
+            }
+        </ul>
+    </div>
+    }
     }
 </article>
 

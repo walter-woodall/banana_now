@@ -2,6 +2,7 @@ package controllers;
 
 import models.Category;
 import models.Customer;
+import models.Store;
 import models.Product;
 import play.*;
 import play.data.Form;
@@ -14,11 +15,26 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-
+        Store walmart = Store.find.byId("1");
+        Store amazon = Store.find.byId("2");
         return ok(index.render(
                 Product.getTopProducts(),
-                Category.getAllCategories(),
+                Category.getAllCategories(walmart),
+                Category.getAllCategories(amazon),
                 Customer.find.where().eq("email", request().username()).findUnique()
+        ));
+    }
+
+    public static Result getFood(String category, String subcategory){
+        Store walmart = Store.find.byId("1");
+        Store amazon = Store.find.byId("2");
+        return ok(foodMain.render(
+                Product.find.where().eq("category", category).eq("subcategory", subcategory).findList(),
+                Category.getAllCategories(walmart),
+                Category.getAllCategories(amazon),
+                Customer.find.where().eq("email", request().username()).findUnique(),
+                category,
+                subcategory
         ));
     }
 

@@ -27,4 +27,10 @@ public class Employee extends Model{
     }
 
     public static Finder<String, Employee> find = new Finder<String, Employee>(String.class, Employee.class);
+
+    /*
+    public static boolean isManagerOf(Store store, String username) {
+        return find.where().eq("")
+    }
+    */
 }

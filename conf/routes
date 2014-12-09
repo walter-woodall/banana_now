@@ -7,5 +7,6 @@ GET     /                           controllers.Application.index()
 GET     /login                      controllers.Application.login()
 GET     /logout                     controllers.Application.logout()
 POST    /login                      controllers.Application.authenticate()
+GET     /food/:cat/:sub             controllers.Application.getFood(cat: String, sub: String)
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

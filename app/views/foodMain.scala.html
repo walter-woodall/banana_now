@@ -1,0 +1,24 @@
+@(products: List[Product], walmartCategories: List[Category], amazonCategories: List[Category], user: Customer, category: String, subcategory: String)
+
+@main(walmartCategories, amazonCategories, user) {
+
+<header>
+    <hgroup>
+        <h1>Dashboard</h1>
+        <h2>@category-->@subcategory</h2>
+    </hgroup>
+</header>
+
+<article  class="tasks">
+    @products.map { product =>
+    <div class="folder" data-folder-id="@product.name">
+        <ul class="list">
+
+            @views.html.products.product(product)
+
+        </ul>
+    </div>
+    }
+</article>
+
+}

@@ -1,10 +1,10 @@
 @(group: String, subcategories: List[Category])
 
 <li class="dropdown">
-<a href="#" data-toggle="dropdown">@group<i class="icon-arrow"></i></a>
-<ul class="dropdown-menu">
-    @subcategories.map { sub =>
-        @views.html.categories.item(sub.subcategory)
-    }
-</ul>
+    <a href="#" data-toggle="dropdown">@group<i class="icon-arrow"></i></a>
+    <ul class="dropdown-menu">
+        @subcategories.map { sub =>
+            @views.html.categories.item(sub.mainCategory, sub.subcategory)
+        }
+    </ul>
 </li>
