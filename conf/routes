@@ -8,8 +8,8 @@ GET     /login                      controllers.Application.login()
 GET     /logout                     controllers.Application.logout()
 POST    /login                      controllers.Application.authenticate()
 
-GET     /signup                      controllers.Application.signup()
-POST    /signup                      controllers.Application.doSignup()
+GET     /signup                      controllers.User.signup()
+POST    /signup                      controllers.User.doSignup()
 
 GET     /food/:cat/:sub             controllers.Application.getFood(cat: String, sub: String)
 POST    /checkout                   controllers.Cart.index()

@@ -10,11 +10,11 @@
 </header>
 
 <article  class="cart">
-    @products.map { product =>
-    <div class="folder" data-folder-id="@product.name">
+    @products.map { cart =>
+    <div class="folder" data-folder-id="@cart.product.name">
         <ul class="list">
 
-            @views.html.products.product(product)
+            @views.html.products.product(cart.product)
 
         </ul>
     </div>

@@ -3,7 +3,7 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by walterwoodall on 12/5/14.
