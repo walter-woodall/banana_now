@@ -1,7 +1,11 @@
 logs
 project/project
 project/target
-target
+target/native_libraries
+target/resolution-cache
+target/scala-2.11
+target/streams
+target/web/less
 tmp
 .history
 dist
