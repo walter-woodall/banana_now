@@ -1,12 +1,6 @@
 package controllers;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import models.Address;
 import models.Category;
-import models.CreditCard;
 import models.Customer;
 import models.Store;
 import models.Product;
