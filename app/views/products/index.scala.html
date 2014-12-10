@@ -21,4 +21,26 @@
     }
 </article>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$( document ).ready(function() {
+
+    var decodedsubcat = $('<div/>').html('@subcategory').text();
+    decodedsubcat = $('<div/>').html(decodedsubcat).text()
+    
+    var decodedcat = $('<div/>').html('@category').text();
+    decodedcat = $('<div/>').html(decodedcat).text()
+
+	$("#search_select option").eq(0).before($('<option>', {
+	    value: decodedsubcat,
+	    text: decodedsubcat
+	}));
+	$("#search_select option").eq(1).before($('<option>', {
+	    value: decodedcat,
+	    text: decodedcat
+	}));
+	$("#search_select").val(decodedsubcat).trigger('change');
+});
+
+</script>
 }
