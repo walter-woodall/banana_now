@@ -24,10 +24,10 @@
             <p><input type="text" name="state" placeholder="State" pattern="\w\w"></p>
             <p><input type="text" name="zipcode" placeholder="Zipcode" pattern="\d{5}"></p>
 			<div class="card-wrapper">
-				<p><input placeholder="Credit Card Number" type="text" name="cc-number" pattern="\d{16}"></p>
+				<p><input placeholder="Credit Card Number" type="text" name="cc-number" pattern="\d{4} \d{4} \d{4} \d{4}"></p>
 				<p><input placeholder="Full Name" type="text" name="cc-name"></p>
-				<p><input placeholder="MM/YY" type="text" name="cc-expiration" pattern="\d\d\/\d\d"></p>
-                <p><input placeholder="ZIPCODE ON CARD" type="text" name="cc-zip" pattern="\d{5}"></p>
+				<p><input placeholder="MM / YY" type="text" name="cc-expiry" pattern="\d\d\ \/ \d\d"></p>
+                <p><input placeholder="Billing Zip" type="text" name="cc-zip" pattern="\d{5}"></p>
                 <p><input placeholder="CVC" type="text" name="cc-cvc" pattern="\d{3}"></p>
 			</div>
 		
@@ -54,8 +54,8 @@
 
     // Default values for rendered fields - options
     values: {
-        ccNumber: '•••• •••• •••• ••••',
-        ccName: 'Full Name',
+        Number: '•••• •••• •••• ••••',
+        Name: 'Full Name',
         expiration: '••/••',
         cvc: '•••'
     },

@@ -1,0 +1,26 @@
+@import 'libs/_reset.less';
+@import 'libs/_mate.less';
+@import 'libs/_theme.less';
+@import 'main/_layout.less';
+@import 'main/_widgets.less';
+@import 'main/_drawer.less';
+@import 'main/_header.less';
+@import 'main/_breadcrumb.less';
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
+body {
+    background: @mainBackground;
+    color: @mainColor;
+    font: @defaultFont;
+    -webkit-font-smoothing: antialised;
+    -webkit-user-select: none;
+}
+
+a {
+    color: @links;
+    text-decoration: none;
+    &:hover {
+        color: @linksHover;
+    }
+}
