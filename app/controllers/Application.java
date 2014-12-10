@@ -29,7 +29,7 @@ public class Application extends Controller {
                 Customer.find.where().eq("email", request().username()).findUnique()
         ));
     }
-
+    @Security.Authenticated(Secured.class)
     public static Result getFood(String category, String subcategory){
         Store walmart = Store.find.byId("1");
         Store amazon = Store.find.byId("2");
