@@ -10,12 +10,13 @@ import javax.persistence.*;
 @Entity
 @Table(name="shopping_cart")
 public class ShoppingCart extends Model{
-
+    @Id
+    public int id;
     @ManyToOne
     public Customer customer;
+    @ManyToOne
     public Product product;
     public int quantity;
-
 
     public ShoppingCart(Customer customer, Product product, int quantity){
         this.customer = customer;

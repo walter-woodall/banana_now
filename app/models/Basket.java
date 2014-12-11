@@ -18,6 +18,7 @@ public class Basket extends Model {
     public Timestamp time;
     int complete;
     @ManyToOne
+    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
     public Customer customer;
     @ManyToOne
     public Employee employee;
