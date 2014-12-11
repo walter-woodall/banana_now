@@ -15,7 +15,7 @@ import play.mvc.Security;
 public class Item extends Controller {
 
     public static Result addToCart(){
-        Customer currCustomer = Customer.find.where().eq("email", request().username()).findUnique();
+        Customer currCustomer = Customer.find.where().eq("email", session().get("email")).findUnique();
         JsonNode json = request().body().asJson();
         int quantity = json.get("quantity").asInt();
         String productId = json.get("id").asText();

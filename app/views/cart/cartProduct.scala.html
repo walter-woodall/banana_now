@@ -1,0 +1,16 @@
+@(cartProduct: ShoppingCart)
+
+<li data-task-id="@cartProduct.product.id">
+    <img src="@cartProduct.product.imageUrl" alt="No Image Available">
+    <div>
+        <h2>@cartProduct.product.name</h2>
+
+        <!-- Price Display -->
+
+        <span class="product-price">$@cartProduct.product.price</span>
+    </div>
+    <p>
+        Qty: <input class="qty" type="text" id="cart" value="@cartProduct.quantity">
+        <button>Remove</button>
+    </p>
+</li>

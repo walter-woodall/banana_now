@@ -76,9 +76,9 @@ public class ModelsTest extends WithApplication{
     /*
     PASSED
      */
-    //@Test
+    @Test
     public void createAndAddCreditCard(){
-        Customer walter = Customer.find.where().eq("email", "test@banananow.com").findUnique();
+        Customer walter = Customer.find.where().eq("email", "ready@b.com").findUnique();
         //Date date = new Date(2017, 10, 1);
         //new CreditCard(1234567812345679L, walter, "walter wooodall", date, 21919, 123).save();
         for(CreditCard card : walter.creditCardList){

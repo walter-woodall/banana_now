@@ -8,10 +8,25 @@
         <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/search.css")">
         <script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.7.1.js")"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            $("addToCart").ajaxForm({url: '/item/addToCart', type: 'post'})
+    </script>
     </head>
     <body>
         <header>
             <a href="@routes.Application.index" id="logo"><span>Banana</span>Now</a>
+
+
+            <section class="webdesigntuts-workshop">
+                <form action="" method="">
+                    <input type="search" placeholder="Search...">
+                    <select id="search_select">
+                        <option value="all">Entire Site</option>
+                    </select>
+                    <button>Search</button>
+                </form>
+            </section>
+
             <dl id="user">
 
                 @if(user != null){
@@ -29,17 +44,7 @@
                     <a href="@routes.Cart.index()">Cart</a>
                 </dd>
             </dl>
-            
-            <section class="webdesigntuts-workshop">
-				<form action="" method="">		    
-					<input type="search" placeholder="Search...">
-					<select id="search_select">
-  						<option value="all">Entire Site</option>
-					</select>		    	
-					<button>Search</button>
-				</form>
-			</section>
-			
+
         </header>
         
         <nav>

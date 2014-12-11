@@ -6,18 +6,21 @@
     <hgroup>
         <h1>Cart</h1>
         <h2>@user.name (@user.email)</h2>
+        <h1>
+            <a href="@routes.Cart.checkout()">Checkout</a>
+        </h1>
     </hgroup>
 </header>
 
 <article  class="cart">
     @products.map { cart =>
-    <div class="folder" data-folder-id="@cart.product.name">
-        <ul class="list">
+        <div class="folder" data-folder-id="@cart.product.name">
+            <ul class="list">
 
-            @views.html.products.product(cart.product)
+                @views.html.cart.cartProduct(cart)
 
-        </ul>
-    </div>
+            </ul>
+        </div>
     }
 </article>
 

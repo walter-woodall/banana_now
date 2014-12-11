@@ -3,38 +3,20 @@
 <li data-task-id="@product.id">
     <img src="@product.imageUrl" alt="No Image Available">
 
-    <h4>@product.name</h4>
+    <h2>@product.name</h2>
 
     <!-- Price Display -->
     @if(product.price != 0.0){
-    <span class="product-price">@product.price</span>
+        <span class="product-price">@product.price</span>
+        <p>
+            <form name="addToCart">
+                <input hidden="true" class="prodcutId" type="text" value="@product.id">
+                Qty: <input class="qty" type="text" id="cart" value="1">
+            </form>
+        </p>
+        <button name="Add">Add to Cart</button>
     }
     @if(product.price == 0.0){
-    <span class="available-in-store">Only Available in Store</span>
+        <span class="available-in-store">Only Available in Store</span>
     }
-
-    <script>
-    $(document).ready(function() {
-        $("button").click(function(){
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:9000/item/addToCart"
-                dataType: "json",
-                data: '{"id":"@product.id", "quantity":"$('.qty').value"}',
-                success: function(data){
-                    alert("Added to Cart!");
-                },
-                error: function(data){
-                    alert("error");
-                }
-
-            });
-        });
-    });
-    </script>
-
-    <p>
-        Qty: <input class="qty" type="text" id="cart" value="1">
-    </p>
-    <button>Add to Cart</button>
 </li>
