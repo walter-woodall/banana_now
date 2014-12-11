@@ -75,10 +75,10 @@ public class User extends Controller {
                     signUpForm.data().get("name"),address);
             c.save();
 
-            SimpleDateFormat parserSDF=new SimpleDateFormat("mm/yy");
+            SimpleDateFormat parserSDF=new SimpleDateFormat("mm / yy");
             java.util.Date expires = null;
             try {
-                expires = parserSDF.parse(signUpForm.data().get("cc-expiration"));
+                expires = parserSDF.parse(signUpForm.data().get("cc-expiry"));
             } catch (ParseException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
