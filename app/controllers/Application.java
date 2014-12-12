@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.Arrays;
+import java.util.List;
+
 import models.Category;
 import models.Customer;
 import models.Store;
@@ -36,11 +39,16 @@ public class Application extends Controller {
                 subcategory
         ));
     }
+    
 
     public static Result login(){
         return ok(
                 login.render(form(Login.class))
         );
+    }
+    
+    public static Result reroute(){
+    	return redirect(routes.Application.index());
     }
 
     public static Result logout() {
@@ -62,6 +70,57 @@ public class Application extends Controller {
                     routes.Application.index()
             );
         }
+    }
+    
+    @Security.Authenticated(Secured.class)
+    public static Result search() {
+        Form<Search> searchForm = form(Search.class).bindFromRequest();
+        String search = searchForm.data().get("search");
+        String section = searchForm.data().get("section");
+
+        List<Product> productsReturned = Arrays.asList(new Product("No items found", new Float(0.0), "", "", "", "", Store.find.byId("1")));
+    	if(section.equals("all")){
+    		productsReturned = Product.find.where().contains("name", search).findList();
+    	} else if(section.startsWith("subcat:")){
+            section = section.replaceFirst("subcat:", "");    
+            Product.find.where().eq("subcategory", section).contains("name", search).findList();
+    	} else {
+    		section = section.replaceFirst("cat:", "");    
+            Product.find.where().eq("category", section).contains("name", search).findList();
+    	}
+        
+    	return ok(views.html.search.index.render(
+        		productsReturned,
+        Category.getAllCategories(Store.find.byId("1")),
+        Category.getAllCategories(Store.find.byId("2")),
+        Customer.find.where().eq("email", request().username()).findUnique(),
+        section,
+        search
+        )); 
+    }
+    
+    public static class Search {
+
+    	public String section;
+    	public String search;
+    	
+    	public String getSection() {
+    		return section;
+    	}
+    	public void setSection(String section) {
+    		this.section = section;
+    	}
+    	public String getSearch() {
+    		return search;
+    	}
+    	public void setSearch(String search) {
+    		this.search = search;
+    	}
+    	
+        public String validate() {
+            return null;
+        }
+        
     }
 
     public static class Login{

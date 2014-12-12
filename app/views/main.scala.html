@@ -30,13 +30,13 @@
             </dl>
             
             <section class="webdesigntuts-workshop">
-				<form action="" method="">		    
-					<input type="search" placeholder="Search...">
-					<select id="search_select">
+				@helper.form(routes.Application.search) {		    
+					<input type="search" name="search" placeholder="Search...">
+					<select name="section" id="section">
   						<option value="all">Entire Site</option>
 					</select>		    	
 					<button>Search</button>
-				</form>
+				}
 			</section>
 			
         </header>
