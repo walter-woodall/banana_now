@@ -25,8 +25,9 @@ public class Product extends Model{
     @ManyToOne
     public Store store;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-    private List<BasketProduct> basket_product;
-
+    public List<BasketProduct> basket_product;
+    @OneToMany(mappedBy = "product")
+    public List<ShoppingCart> shoppingCartList;
 
     public Product(String name, Float price, String category, String subcategory, String imageUrl, String url, Store store){
         this.name = name;

@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import play.test.WithApplication;
 
+import java.util.Date;
 import java.util.List;
 
 import static play.test.Helpers.fakeApplication;
@@ -24,12 +25,13 @@ public class ModelsTest extends WithApplication{
      */
     //@Test
     public void createAndRetrieveCustomer(){
-        Address address =  new Address("694 Pond Neck Rd", "Earleville", "MD", 21919);
-        address.save();
-        new Customer("test@banana_now.com", "password", "Walter", address).save();
-        Customer walter = Customer.find.where().eq("email", "test@test.com").findUnique();
-        assertNotNull(address);
-        assertEquals("md", address.state);
+        //Address address =  new Address("696 Pond Neck Rd", "Earleville", "MD", 21919);
+        //address.save();
+        //new Customer("test@b.com", "password", "Walter", address).save();
+        Customer walter = Customer.find.where().eq("email", "test@b.com").findUnique();
+        System.out.println(walter.address.address1);
+        assertNotNull(walter.address);
+        assertEquals("md", walter.address.state);
     }
 
     /*
@@ -76,9 +78,9 @@ public class ModelsTest extends WithApplication{
      */
     //@Test
     public void createAndAddCreditCard(){
-        Customer walter = Customer.find.where().eq("email", "test@banana_now.com").findUnique();
+        Customer walter = Customer.find.where().eq("email", "test@banananow.com").findUnique();
         //Date date = new Date(2017, 10, 1);
-        //new CreditCard(1234567812345678L, walter, "walter wooodall", date, 21919, 123).save();
+        //new CreditCard(1234567812345679L, walter, "walter wooodall", date, 21919, 123).save();
         for(CreditCard card : walter.creditCardList){
            System.out.println(card.number);
         }
@@ -112,4 +114,29 @@ public class ModelsTest extends WithApplication{
         assertNotNull(productList);
         System.out.println(productList);
     }
+    /*
+    PASSED
+     */
+    //@Test
+    public void createAndRetrieveCart(){
+        Customer walter = Customer.find.where().eq("email", "test@banananow.com").findUnique();
+        Product p1 = Product.find.where().idEq(1).findUnique();
+        Product p2 = Product.find.where().idEq(2).findUnique();
+
+        new ShoppingCart(walter, p1, 2).save();
+        new ShoppingCart(walter, p2, 3).save();
+
+        if(walter.shoppingCartList.size() < 2){
+            assert(false);
+        }
+        for(ShoppingCart cart : walter.shoppingCartList){
+            assertNotNull(cart.product.name);
+            assertNotNull(cart.product.price);
+            System.out.println(cart.product.name);
+            System.out.println(cart.product.price);
+            System.out.println(cart.quantity);
+
+        }
+    }
+
 }
