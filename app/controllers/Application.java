@@ -83,10 +83,10 @@ public class Application extends Controller {
     		productsReturned = Product.find.where().contains("name", search).findList();
     	} else if(section.startsWith("subcat:")){
             section = section.replaceFirst("subcat:", "");    
-            Product.find.where().eq("subcategory", section).contains("name", search).findList();
+            productsReturned = Product.find.where().eq("subcategory", section).contains("name", search).findList();
     	} else {
     		section = section.replaceFirst("cat:", "");    
-            Product.find.where().eq("category", section).contains("name", search).findList();
+    		productsReturned = Product.find.where().eq("category", section).contains("name", search).findList();
     	}
         
     	return ok(views.html.search.index.render(
