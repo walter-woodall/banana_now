@@ -9,12 +9,12 @@
     @if(product.price != 0.0){
         <span class="product-price">@product.price</span>
         <p>
-            <form name="addToCart">
-                <input hidden="true" class="prodcutId" type="text" value="@product.id">
-                Qty: <input class="qty" type="text" id="cart" value="1">
+            <form id="addToCart">
+                <input hidden="true" id="prodcutId" type="text" value="@product.id"/>
+                Qty: <input id="qty" type="text" id="cart" value="1"/>
+                <input id="addSubmit" type="submit" value="Add To Cart"/>
             </form>
         </p>
-        <button name="Add">Add to Cart</button>
     }
     @if(product.price == 0.0){
         <span class="available-in-store">Only Available in Store</span>

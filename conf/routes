@@ -8,7 +8,7 @@ GET     /login                      controllers.Application.login()
 GET     /logout                     controllers.Application.logout()
 POST    /login                      controllers.Application.authenticate()
 
-# Sign Up
+# User
 GET     /signup                      controllers.User.signup()
 POST    /signup                      controllers.User.doSignup()
 
@@ -17,7 +17,12 @@ GET     /food/:cat/:sub             controllers.Application.getFood(cat: String,
 
 # Cart
 GET     /cart                       controllers.Cart.index()
-POST    /item/addToCart             controllers.Item.addToCart()
 POST    /cart/checkout              controllers.Cart.checkout()
+
+# Item
+POST    /item/addToCart             controllers.Item.addToCart()
+
+GET     /javascriptRoutes           controllers.Application.javascriptRoutes()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
