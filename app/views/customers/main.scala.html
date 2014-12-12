@@ -1,14 +1,14 @@
-@(walmartCategories: List[Category],  amazonCategories: List[Category], user: Customer)(body: Html)
+@(user: Customer)(body: Html)
 
 <html>
-    <head>
-        <title>Banana Now</title>
-        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/dropmenu.css")">
-        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/search.css")">
-        <script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.7.1.js")"></script>
+<head>
+    <title>Banana Now</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/dropmenu.css")">
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/search.css")">
+    <script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.7.1.js")"></script>
         <script type="text/javascript" src='@routes.Application.javascriptRoutes()'></script>
-        <script type="text/javascript" src="@routes.Assets.at("javascripts/dropdown.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.at("javascripts/dropdown.js")"></script>
     </head>
     <body>
         <header>
@@ -49,18 +49,20 @@
         </header>
 
         <nav>
-            <h4 class="dashboard"><a href="#/">Walmart</a></h4>
-                @walmartCategories.groupBy(_.mainCategory).map {
-                    case (group, subcategories) => {
-                        @views.html.categories.group(group, subcategories)
-                    }
-                }
-            <h4 class="dashboard"><a href="#/">Amazon Fresh</a></h4>
-                @amazonCategories.groupBy(_.mainCategory).map {
-                    case (group, subcategories) => {
-                        @views.html.categories.group(group, subcategories)
-                    }
-                }
+            <ul class="user-nav">
+                <li>
+                    <a href="@routes.User.info(user.id)">Personal Info</a>
+                </li>
+                <li>
+                    <a href="@routes.User.creditCards(user.id)">Credit Cards</a>
+                </li>
+                <li>
+                    <a href="@routes.User.orders(user.id)">Open Orders</a>
+                </li>
+                <li>
+                    <a href="@routes.User.transactions(user.id)">Order History</a>
+                </li>
+            </ul>
         </nav>
         <section id="main">
             @body

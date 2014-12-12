@@ -9,7 +9,7 @@
     </hgroup>
 </header>
 
-<article  class="tasks">
+<article  class="products">
     @products.groupBy(_.category).map {
     case (category, products) => {
     <div class="folder" data-folder-id="@category">
@@ -18,7 +18,7 @@
         </header>
         <ul class="list">
             @products.map { product =>
-            @views.html.products.product(product)
+                @views.html.products.product(product)
             }
         </ul>
     </div>

@@ -1,0 +1,42 @@
+@(card: CreditCard, form: Form[CreditCard])
+
+<div class="card-wrapper">
+    <p><input placeholder="Credit Card Number" type="text" name="cc-number" pattern="\d{4} \d{4} \d{4} \d{4}" value="@card.number"></p>
+    <p><input placeholder="Full Name" type="text" name="cc-name" value="@card.name"></p>
+    <p><input placeholder="MM / YY" type="text" name="cc-expiry" pattern="\d\d\ \/ \d\d" value="@card.expiration"></p>
+    <p><input placeholder="Billing Zip" type="text" name="cc-zip" pattern="\d{5}" value="@card.zipcode"></p>
+    <p><input placeholder="CVC" type="text" name="cc-cvc" pattern="\d{3}" value="@card.cvc"></p>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="@routes.Assets.at("javascripts/card.js")"></script>
+        <script>
+            $('form').card({
+    // a selector or jQuery object for the container
+    // where you want the card to appear
+    container: '.card-wrapper', // *required*
+    numberInput: 'input[name="cc-number"]',
+    expiryInput: 'input[name="cc-expiry"]',
+    cvcInput: 'input[name="cc-cvc"]', //
+    nameInput: 'input[name="cc-name"]',
+
+    width: 300, // optional — default 350px
+    formatting: true, // optional - default true
+
+    // Strings for translation - optional
+    messages: {
+        validDate: 'valid\ndate', // optional - default 'valid\nthru'
+        monthYear: 'mm/yyyy', // optional - default 'month/year'
+    },
+
+    // Default values for rendered fields - options
+    values: {
+        Number: '•••• •••• •••• ••••',
+        Name: 'Full Name',
+        expiration: '••/••',
+        cvc: '•••'
+    },
+
+    debug: false // if true, will log helpful messages for setting up Card
+});
+</script>

@@ -7,6 +7,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.customers.signup;
 
 import java.text.ParseException;
@@ -18,29 +19,54 @@ import static play.data.Form.form;
 /**
  * Created by walterwoodall on 12/9/14.
  */
+@Security.Authenticated(Secured.class)
 public class User extends Controller {
-
-    public static class Signup {
-        public String name;
-        public String password;
-        public String email;
-        public String address1;
-        public String address2;
-        public String city;
-        public String state;
-        public Integer zipcode;
-        public Long ccNumber;
-        public String ccName;
-        public Date expiration;
-        public Integer ccZipcode;
-        public Integer cvc;
-
-        public String validate() {
-            if (Customer.find.where().eq("email", email).findUnique() != null) {
-                return "This email already exists";
-            }
-            return null;
+    /*
+    TODO:
+     */
+    public static Result update(Integer id){
+        return null;
+    }
+    /*
+    TODO:
+     */
+    public static Result info(Integer id){
+        Customer customer = Customer.find.byId(id.toString());
+        if(!customer.email.equals(session().get("email"))){
+            customer = Customer.find.where().eq("email", session().get("email")).findUnique();
         }
+
+        return ok(views.html.customers.userInfo.render(
+                form(Signup.class),
+                customer
+        ));
+    }
+    /*
+    TODO:
+     */
+    public static Result creditCards(Integer id){
+        return null;
+    }
+    /*
+    TODO:
+     */
+    public static Result orders(Integer id){
+        return null;
+    }
+    /*
+    TODO:
+     */
+    public static Result transactions(Integer id){
+        return null;
+    }
+    public static Result settings(Integer id){
+        Customer customer = Customer.find.byId(id.toString());
+        if(!customer.email.equals(session().get("email"))){
+            customer = Customer.find.where().eq("email", session().get("email")).findUnique();
+        }
+        return ok(views.html.customers.settings.render(
+            customer
+        ));
     }
 
     public static Result signup(){
@@ -98,6 +124,29 @@ public class User extends Controller {
             return redirect(
                     routes.Application.login()
             );
+        }
+    }
+
+    public static class Signup {
+        public String name;
+        public String password;
+        public String email;
+        public String address1;
+        public String address2;
+        public String city;
+        public String state;
+        public Integer zipcode;
+        public Long ccNumber;
+        public String ccName;
+        public Date expiration;
+        public Integer ccZipcode;
+        public Integer cvc;
+
+        public String validate() {
+            if (Customer.find.where().eq("email", email).findUnique() != null) {
+                return "This email already exists";
+            }
+            return null;
         }
     }
 }

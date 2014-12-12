@@ -1,0 +1,41 @@
+@(form: Form[User.Signup], user : Customer)
+
+@main(user){
+    <header>
+        <hgroup>
+            <h1>Dashboard</h1>
+            <h2>Account Settings</h2>
+        </hgroup>
+    </header>
+
+    <article  class="user-info">
+    @helper.form(routes.User.update(user.id)) {
+        <h1>User Info</h1>
+
+        <p>Name:     <input type="text" name="name" placeholder="Name" value="@user.name"> </p>
+        <p>Email:    <input type="email" name="email" placeholder="Email" value="@user.email"></p>
+        <p>Password: <input type="password" name="password" placeholder="Password" value="@user.password"></p>
+        <p>Address1: <input type="text" name="address1" placeholder="Address Line 1" value="@user.address.address1"></p>
+        <p>Address2: <input type="text" name="address2" placeholder="Address Line 2" value="@user.address.address2"></p>
+        <p>City:     <input type="text" name="city" placeholder="City" value="@user.address.city"></p>
+        <p>State:    <input type="text" name="state" placeholder="State" pattern="\w\w" value="@user.address.state"></p>
+        <p>ZipCode:  <input type="text" name="zipcode" placeholder="Zipcode" pattern="\d{5}" value="@user.address.zipcode"></p>
+
+        <p><button type="submit">Update Information</button></p>
+
+        @if(form.hasGlobalErrors) {
+            <p class="error">
+                @form.globalError.message
+            </p>
+        }
+
+        @if(flash.contains("success")) {
+            <p class="success">
+                @flash.get("success")
+            </p>
+        }
+    }
+    </article>
+
+    </body>
+}
