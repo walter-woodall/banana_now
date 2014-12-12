@@ -13,17 +13,6 @@
         <header>
             <a href="@routes.Application.index" id="logo"><span>Banana</span>Now</a>
 
-
-            <section class="webdesigntuts-workshop">
-                <form action="" method="">
-                    <input type="search" placeholder="Search...">
-                    <select id="search_select">
-                        <option value="all">Entire Site</option>
-                    </select>
-                    <button>Search</button>
-                </form>
-            </section>
-
             <dl id="user">
 
                 @if(user != null){
@@ -41,6 +30,17 @@
                     <a href="@routes.Cart.index()">Cart</a>
                 </dd>
             </dl>
+            
+            <section class="webdesigntuts-workshop">
+				@helper.form(routes.Application.search) {		    
+					<input type="search" name="search" placeholder="Search...">
+					<select name="section" id="section">
+  						<option value="all">Entire Site</option>
+					</select>		    	
+					<button>Search</button>
+				}
+			</section>
+			
 
         </header>
         

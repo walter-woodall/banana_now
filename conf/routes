@@ -15,14 +15,23 @@ POST    /signup                      controllers.User.doSignup()
 # Other
 GET     /food/:cat/:sub             controllers.Application.getFood(cat: String, sub: String)
 
+
 # Cart
+
+
+GET     /search             		controllers.Application.reroute()
+POST     /search             		controllers.Application.search()
+
+
 GET     /cart                       controllers.Cart.index()
 POST    /cart/checkout              controllers.Cart.checkout()
 
 # Item
 POST    /item/addToCart             controllers.Item.addToCart()
 
+
 GET     /javascriptRoutes           controllers.Application.javascriptRoutes()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
