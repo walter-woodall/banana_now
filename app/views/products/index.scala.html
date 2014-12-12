@@ -31,15 +31,15 @@ $( document ).ready(function() {
     var decodedcat = $('<div/>').html('@category').text();
     decodedcat = $('<div/>').html(decodedcat).text()
 
-	$("#search_select option").eq(0).before($('<option>', {
-	    value: decodedsubcat,
+	$("#section option").eq(0).before($('<option>', {
+	    value: 'subcat:'+ decodedsubcat,
 	    text: decodedsubcat
 	}));
-	$("#search_select option").eq(1).before($('<option>', {
-	    value: decodedcat,
+	$("#section option").eq(1).before($('<option>', {
+	    value: 'cat:' + decodedcat,
 	    text: decodedcat
 	}));
-	$("#search_select").val(decodedsubcat).trigger('change');
+	$("#section").val('subcat:'+ decodedsubcat).trigger('change');
 });
 
 </script>
