@@ -1,5 +1,5 @@
 @(card: CreditCard, form: Form[CreditCard])
-
+<li>
 <div class="card-wrapper">
     <p><input placeholder="Credit Card Number" type="text" name="cc-number" pattern="\d{4} \d{4} \d{4} \d{4}" value="@card.number"></p>
     <p><input placeholder="Full Name" type="text" name="cc-name" value="@card.name"></p>
@@ -7,7 +7,7 @@
     <p><input placeholder="Billing Zip" type="text" name="cc-zip" pattern="\d{5}" value="@card.zipcode"></p>
     <p><input placeholder="CVC" type="text" name="cc-cvc" pattern="\d{3}" value="@card.cvc"></p>
 </div>
-
+<!--
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="@routes.Assets.at("javascripts/card.js")"></script>
         <script>
@@ -40,3 +40,5 @@
     debug: false // if true, will log helpful messages for setting up Card
 });
 </script>
+-->
+</li>

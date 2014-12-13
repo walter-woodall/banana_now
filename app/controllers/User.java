@@ -19,7 +19,7 @@ import static play.data.Form.form;
 /**
  * Created by walterwoodall on 12/9/14.
  */
-@Security.Authenticated(Secured.class)
+
 public class User extends Controller {
     /*
     TODO:
@@ -30,6 +30,7 @@ public class User extends Controller {
     /*
     TODO:
      */
+    @Security.Authenticated(Secured.class)
     public static Result info(Integer id){
         Customer customer = Customer.find.byId(id.toString());
         if(!customer.email.equals(session().get("email"))){
@@ -44,21 +45,35 @@ public class User extends Controller {
     /*
     TODO:
      */
+    @Security.Authenticated(Secured.class)
     public static Result creditCards(Integer id){
-        return null;
+        Customer customer = Customer.find.byId(id.toString());
+
+        if(!customer.email.equals(session().get("email"))){
+            customer = Customer.find.where().eq("email", session().get("email")).findUnique();
+        }
+
+        return ok(views.html.customers.cards.render(
+                customer,
+                customer.creditCardList,
+                form(CreditCard.class)
+        ));
     }
     /*
     TODO:
      */
+    @Security.Authenticated(Secured.class)
     public static Result orders(Integer id){
         return null;
     }
     /*
     TODO:
      */
+    @Security.Authenticated(Secured.class)
     public static Result transactions(Integer id){
         return null;
     }
+    @Security.Authenticated(Secured.class)
     public static Result settings(Integer id){
         Customer customer = Customer.find.byId(id.toString());
         if(!customer.email.equals(session().get("email"))){
@@ -71,7 +86,7 @@ public class User extends Controller {
 
     public static Result signup(){
         return ok(
-                signup.render(form(Signup.class))
+                views.html.customers.signup.render(form(Signup.class))
         );
     }
 

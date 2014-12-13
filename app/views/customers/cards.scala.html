@@ -1,0 +1,21 @@
+@(user: Customer, cards: List[CreditCard], form: Form[CreditCard])
+
+@main(user) {
+
+<header>
+    <hgroup>
+        <h1>Dashboard</h1>
+        <h2>Account Settings</h2>
+    </hgroup>
+</header>
+
+<article  class="user-info">
+    <ul id="card-list">
+    @cards.map { card =>
+        @views.html.customers.creditCard(card, form)
+    }
+    </br>
+    </ul>
+</article>
+
+}

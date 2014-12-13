@@ -8,13 +8,12 @@
     <!-- Price Display -->
     @if(product.price != 0.0){
         <span class="product-price">@product.price</span>
-        <p>
-            <form id="addToCart">
-                <input hidden="true" id="prodcutId" type="text" value="@product.id"/>
-                Qty: <input id="qty" type="text" id="cart" value="1"/>
-                <input id="addSubmit" type="submit" value="Add To Cart"/>
-            </form>
-        </p>
+        <form name="ajaxform" id="ajaxform" action="@routes.Item.addToCart()" method="POST">
+            <input type="text" name="id" value="@product.id" hidden="true"/>
+            <input type="text" name="qty" value ="1" /> <br/>
+            <input type="submit" name="submit" value="Add To Cart"/>
+        </form>
+
     }
     @if(product.price == 0.0){
         <span class="available-in-store">Only Available in Store</span>
