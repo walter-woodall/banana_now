@@ -1,0 +1,10 @@
+@(cartProduct: ShoppingCart)
+
+<li data-task-id="@cartProduct.product.id">
+    <div>
+        <h2>@cartProduct.product.name</h2>
+        <h2>Qty: @cartProduct.quantity</h2>
+        <h2>Price: @cartProduct.product.price</h2>
+        <h2>Subtotal: -----------------------------------------> @cartProduct.subtotal</h2>
+    </div>
+</li>

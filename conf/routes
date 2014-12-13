@@ -27,7 +27,8 @@ POST    /search             		controllers.Application.search()
 
 # Cart
 GET     /cart                       controllers.Cart.index()
-POST    /cart/checkout              controllers.Cart.checkout()
+GET     /cart/checkout/:id          controllers.Cart.checkout(id : Integer)
+POST    /cart/placeOrder/:id        controllers.Cart.placeOrder(id :Integer)
 
 # Item
 POST    /item/addToCart             controllers.Item.addToCart()

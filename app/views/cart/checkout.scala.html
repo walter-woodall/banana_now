@@ -1,0 +1,46 @@
+@(products: List[ShoppingCart], walmartCategories: List[Category], amazonCategories: List[Category], user: Customer, subtotal: String, total: String)
+
+@main(walmartCategories, amazonCategories, user) {
+
+<header>
+    <hgroup>
+        <h1>Cart</h1>
+        <h2>@user.name (@user.email)</h2>
+
+    </hgroup>
+</header>
+
+<article  class="cart">
+
+    @products.map { cart =>
+    <div class="folder" data-folder-id="@cart.product.name">
+        <ul class="list">
+
+            @views.html.cart.receipt(cart)
+
+        </ul>
+    </div>
+    }
+    <p>
+        Subtotal : @subtotal
+    </p>
+    <p>
+        Maryland Tax : .06
+    </p>
+    <p>
+        Total : @total
+    </p>
+    <p>
+        <form name="ajaxform" id="ajaxform" action="@routes.Cart.placeOrder(user.id)" method="POST">
+            Choose Delivery Date: <input id="date" name="date" type="date">
+            <select name="delivery-time" form="ajaxform">
+                <option value="morning">morning</option>
+                <option value="afternoon">afternoon</option>
+                <option value="evening">evening</option>
+            </select>
+            <input type="submit" name="submit" value="Place Order"/>
+        </form>
+    </p>
+</article>
+
+}

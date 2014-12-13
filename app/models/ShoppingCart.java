@@ -1,5 +1,8 @@
 package models;
 
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.SqlQuery;
+import com.avaje.ebean.SqlUpdate;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
@@ -17,11 +20,13 @@ public class ShoppingCart extends Model{
     @ManyToOne
     public Product product;
     public int quantity;
+    public Float subtotal;
 
     public ShoppingCart(Customer customer, Product product, int quantity){
         this.customer = customer;
         this.product = product;
         this.quantity = quantity;
+        this.subtotal = product.price * quantity;
     }
 
     public static Finder<String, ShoppingCart> find = new Finder<String, ShoppingCart>(String.class, ShoppingCart.class);
