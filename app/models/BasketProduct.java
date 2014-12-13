@@ -22,7 +22,7 @@ public class BasketProduct extends Model {
     public Basket basket;
 
     public int quantity;
-    public float subtotal;
+    public Float subtotal;
 
 
     public BasketProduct(Product product, Basket basket, int quantity){
