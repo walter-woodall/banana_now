@@ -13,12 +13,12 @@ public class BasketProduct extends Model {
     @EmbeddedId
     public BasketProductPk id;
 
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name="product_id")
+    @ManyToOne
+    @JoinColumn(name="product_id", insertable = false, updatable = false)
     public Product product;
 
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="basket_id")
+    @ManyToOne
+    @JoinColumn(name="basket_id", insertable = false, updatable = false)
     public Basket basket;
 
     public int quantity;
@@ -26,7 +26,7 @@ public class BasketProduct extends Model {
 
 
     public BasketProduct(Product product, Basket basket, int quantity){
-        this.id = new BasketProductPk(product, basket);
+        this.id = new BasketProductPk(product.id, basket.id);
         this.product = product;
         this.basket = basket;
         this.quantity = quantity;

@@ -88,7 +88,7 @@ public class ModelsTest extends WithApplication{
     /*
     FAILED. Fix on stack overflow
      */
-    //@Test
+    @Test
     public void createAndRetrieveOrder(){
         Customer walter = Customer.find.where().eq("email", "test@banana_now.com").findUnique();
         Product p1 = Product.find.where().idEq(1).findUnique();

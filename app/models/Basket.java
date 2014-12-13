@@ -4,7 +4,9 @@ import com.avaje.ebean.annotation.CreatedTimestamp;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,11 +20,13 @@ public class Basket extends Model {
     public Timestamp time;
     int complete;
     @ManyToOne
-    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
     public Customer customer;
     @ManyToOne
     public Employee employee;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "basket")
+    @Column(name = "delivery_date")
+    public Date date;
+    public String deliveryTime;
+    @OneToMany(mappedBy = "basket")
     public  List<BasketProduct> basket_product;
 
     public Basket(Customer customer){

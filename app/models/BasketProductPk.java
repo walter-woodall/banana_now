@@ -10,11 +10,11 @@ import java.io.Serializable;
 @Embeddable
 public class BasketProductPk implements Serializable{
     @Column(name = "product_id")
-    private Product product;
+    private Integer product;
     @Column(name = "basket_id")
-    private Basket basket;
+    private Integer basket;
 
-    public BasketProductPk(Product product, Basket basket) {
+    public BasketProductPk(Integer product, Integer basket) {
         this.product = product;
         this.basket = basket;
     }
@@ -38,9 +38,7 @@ public class BasketProductPk implements Serializable{
     @Override
     public int hashCode() {
         return (
-                (product==null?0:product.hashCode())
-                        ^
-                        (basket.hashCode())
+            product + basket
         );
     }
 
